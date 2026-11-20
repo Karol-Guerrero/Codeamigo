@@ -94,25 +94,6 @@
       font-size: 0.78rem;
     }
 
-    /* ---- Explicación del flujo (para la expo) ---- */
-    .flujo-prueba {
-      background: var(--blanco);
-      border-radius: var(--radio-tarjeta);
-      box-shadow: var(--sombra);
-      padding: 18px 20px;
-    }
-    .flujo-prueba h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
-    .flujo-prueba ol {
-      margin: 0;
-      padding-left: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.85rem;
-      line-height: 1.45;
-      color: var(--texto);
-    }
-    .flujo-prueba small { display: block; color: var(--texto-suave); margin-top: 10px; font-size: 0.78rem; line-height: 1.4; }
   </style>
 </head>
 <body>
@@ -152,17 +133,6 @@
       </p>
     </section>
 
-    <section class="flujo-prueba">
-      <h3>Qué pasa en esta prueba</h3>
-      <ol>
-        <li>El usuario paga <strong>$5.00 MXN</strong> aquí mismo, con una tarjeta de prueba de Mercado Pago (modo sandbox).</li>
-        <li>Mercado Pago confirma el pago y nos da un <em>ID de pago</em>.</li>
-        <li>Para devolver los $5.00, se ejecuta un reembolso con ese ID usando el Access Token — esto se hace desde un script aparte, nunca desde el navegador, porque el Access Token es secreto y no debe aparecer en el código de la página.</li>
-      </ol>
-      <small>Por eso esta pantalla solo usa la Public Key (que sí es segura para el navegador). El cobro y la devolución reales se muestran desde la terminal durante la demo.</small>
-    </section>
-
-    <p class="nota centrado"><a class="enlace" href="respaldo/pago_demo.html">¿No carga el botón de pago? Ver demo de respaldo</a></p>
 
   </main>
 
