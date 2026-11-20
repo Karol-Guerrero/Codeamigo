@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Letra Inter. Se carga "en segundo plano" para que la app abra rápido aunque no haya internet. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="encabezado">
+      <span class="marca">
+        <img class="logo" src="img/logo.png" alt="Codeamigo" data-respaldo="logo-respaldo">
+      </span>
+      <div class="acciones">
+        <a class="boton-icono" href="notificaciones.html" aria-label="Notificaciones">
+          <i data-icono="campana"></i>
+          <span class="punto-aviso" id="punto-aviso" hidden></span>
+        </a>
+        <button class="boton-icono amarillo" type="button" aria-label="Mi cuenta" id="boton-cuenta" aria-expanded="false">
+          <i data-icono="usuario"></i>
+        </button>
+
+        <!-- Menú que aparece al tocar el icono amarillo -->
+        <div class="menu" id="menu-cuenta" hidden>
+          <strong id="menu-nombre"></strong>
+          <small id="menu-correo"></small>
+          <button type="button" id="cerrar-sesion">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- Saludo -->
+      <section class="tarjeta saludo">
+        <div class="texto">
+          <h1>¡Hola, <span id="nombre-usuario"></span>!</h1>
+          <p class="subtitulo">Sigue aprendiendo y construye grandes cosas con código.</p>
+          <div class="racha">
+            <i data-icono="flama"></i>
+            <div>
+              <small>Racha de aprendizaje</small>
+              <strong id="racha"></strong>
+            </div>
+          </div>
+          <div class="estrellas" id="estrellas" aria-hidden="true"></div>
+        </div>
+        <img class="mascota" src="img/mascota.png" alt="Mascota de Codeamigo" data-respaldo="mascota-respaldo">
+      </section>
+
+      <!-- Nivel y XP -->
+      <section class="tarjeta nivel">
+        <div class="fila">
+          <span class="medalla"><i data-icono="estrella"></i></span>
+          <div class="datos">
+            <strong id="nivel"></strong>
+            <small>¡Vas muy bien!</small>
+          </div>
+          <span class="xp" id="xp"></span>
+        </div>
+        <div class="barra"><span id="barra-xp" style="width: 0"></span></div>
+        <p class="falta" id="xp-falta"></p>
+      </section>
+
+      <!-- Ruta de aprendizaje -->
+      <div class="seccion-titulo">
+        <i data-icono="mapa"></i>
+        <h2>Tu ruta de aprendizaje</h2>
+        <a class="enlace" href="cursos.html">Ver todo</a>
+      </div>
+
+      <ul class="ruta" id="ruta"></ul>
+
+      <!-- Recompensa -->
+      <a class="recompensa" href="logros.html">
+        <i data-icono="trofeo" class="grande trofeo"></i>
+        <span class="info">
+          <strong>¡Reclama tu recompensa!</strong>
+          <small id="recompensa-texto"></small>
+          <b id="recompensa-insignia"></b>
+        </span>
+        <span class="sello"><i data-icono="estrella"></i></span>
+        <i data-icono="flecha"></i>
+      </a>
+
+    </main>
+
+    <!-- Barra de abajo -->
+    <nav class="barra-inferior" aria-label="Secciones">
+      <a class="activo" href="inicio.html" aria-current="page"><i data-icono="casa"></i>Inicio</a>
+      <a href="curso.html"><i data-icono="libro"></i>Aprender</a>
+      <a href="logros.html"><i data-icono="trofeo"></i>Logros</a>
+      <a href="perfil.html"><i data-icono="usuario"></i>Perfil</a>
+    </nav>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/cursos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+</html>

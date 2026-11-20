@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Planes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* ---- Encabezado (mismo patrón que perfil/logros) ---- */
+    .encabezado-planes {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+    .encabezado-planes .btn-volver {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,0.18);
+      color: var(--blanco);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .encabezado-planes h1 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+    .encabezado-planes .espacio { width: 40px; }
+
+    /* ---- Intro ---- */
+    .planes-intro {
+      padding: 22px 20px 8px;
+      text-align: center;
+    }
+    .planes-intro h2 { font-size: 1.3rem; font-weight: 800; }
+    .planes-intro p {
+      margin-top: 6px;
+      color: var(--texto-suave);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* ---- Tarjetas de plan ---- */
+    .planes-lista {
+      padding: 16px 16px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tarjeta-plan {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 20px;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .tarjeta-plan.premium {
+      border-color: var(--amarillo);
+      background: linear-gradient(180deg, #FFFCF2 0%, var(--blanco) 60%);
+    }
+
+    .badge-recomendado {
+      position: absolute;
+      top: -12px;
+      right: 18px;
+      background: linear-gradient(90deg, var(--amarillo), var(--amarillo-claro));
+      color: var(--azul-oscuro);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      box-shadow: 0 3px 8px rgba(255,201,40,0.4);
+    }
+
+    .plan-encabezado {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .plan-nombre {
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan-nombre .icono { width: 20px; height: 20px; }
+    .tarjeta-plan.premium .plan-nombre .icono { color: #B97A00; }
+    .tarjeta-plan.free .plan-nombre .icono { color: var(--texto-suave); }
+
+    .plan-precio { text-align: right; flex-shrink: 0; }
+    .plan-precio strong { font-size: 1.35rem; font-weight: 800; color: var(--texto); }
+    .plan-precio small { display: block; font-size: 0.72rem; color: var(--texto-suave); }
+
+    .plan-lista {
+      list-style: none;
+      margin: 16px 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .plan-lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .plan-lista .check-si { color: var(--verde); flex-shrink: 0; margin-top: 2px; }
+    .plan-lista .check-no { color: #C3CEDC; flex-shrink: 0; margin-top: 2px; }
+    .plan-lista .apagado { color: var(--texto-suave); }
+
+    .boton-plan {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .tarjeta-plan.free .boton-plan {
+      background: var(--blanco);
+      color: var(--texto-suave);
+      border: 1.5px solid var(--borde);
+      cursor: default;
+    }
+
+    /* ---- Nota de la prueba académica ---- */
+    .nota-demo {
+      margin: 4px 4px 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #E4F0FE;
+      color: var(--azul-oscuro);
+      font-size: 0.78rem;
+      line-height: 1.45;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .nota-demo .icono { flex-shrink: 0; margin-top: 2px; color: var(--azul); }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <header class="encabezado-planes">
+    <a href="perfil.html" class="btn-volver" aria-label="Volver a mi perfil">
+      <i data-icono="atras"></i>
+    </a>
+    <h1>Planes</h1>
+    <div class="espacio"></div>
+  </header>
+
+  <div class="planes-intro">
+    <h2>Aprende sin límites</h2>
+    <p>Pásate a Premium y desbloquea todos los cursos, certificados y mucho más.</p>
+  </div>
+
+  <main class="planes-lista">
+
+    <!-- Plan gratuito -->
+    <section class="tarjeta-plan free">
+      <div class="plan-encabezado">
+        <span class="plan-nombre"><i data-icono="usuario" class="icono"></i>Free</span>
+        <span class="plan-precio"><strong>$0</strong><small>siempre</small></span>
+      </div>
+      <ul class="plan-lista">
+        <li><i data-icono="palomita" class="icono check-si"></i>Python Básico y Estructuras de Control</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>Racha y XP de aprendizaje</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>5 vidas al día (se recargan cada día)</li>
+        <li><i data-icono="cerrar" class="icono check-no"></i><span class="apagado">Cursos de C++, JavaScript y más</span></li>
+        <li><i data-icono="cerrar" class="icono check-no"></i><span class="apagado">Certificados descargables</span></li>
+      </ul>
+      <button class="boton boton-plan" type="button" disabled>Tu plan actual</button>
+    </section>
+
+    <!-- Plan premium -->
+    <section class="tarjeta-plan premium">
+      <span class="badge-recomendado">Recomendado</span>
+      <div class="plan-encabezado">
+        <span class="plan-nombre"><i data-icono="estrella" class="icono"></i>Premium</span>
+        <span class="plan-precio"><strong>$99</strong><small>MXN / mes</small></span>
+      </div>
+      <ul class="plan-lista">
+        <li><i data-icono="palomita" class="icono check-si"></i>Todos los cursos (C++, próximamente JavaScript y Java)</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>Vidas ilimitadas</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>Certificados descargables</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>Insignias exclusivas</li>
+        <li><i data-icono="palomita" class="icono check-si"></i>Sin anuncios</li>
+      </ul>
+      <a class="boton principal boton-plan" href="pago.html">Suscribirme</a>
+    </section>
+
+    <p class="nota-demo">
+      <i data-icono="ayuda" class="icono"></i>
+      Esta pantalla es parte de un proyecto escolar. El botón "Suscribirme" lleva a una prueba de integración de pago con Mercado Pago (modo sandbox), no a un cobro real.
+    </p>
+
+  </main>
+
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/comun.js"></script>
+<script>
+  // Si la cuenta ya es Premium, las tarjetas lo muestran.
+  (function () {
+    if (!Datos.esPremium()) return;
+
+    const botonFree = document.querySelector(".tarjeta-plan.free .boton-plan");
+    botonFree.textContent = "Plan básico";
+
+    const botonPremium = document.querySelector(".tarjeta-plan.premium .boton-plan");
+    const actual = document.createElement("button");
+    actual.className = "boton principal boton-plan";
+    actual.type = "button";
+    actual.disabled = true;
+    actual.textContent = "Tu plan actual";
+    botonPremium.replaceWith(actual);
+
+    // Para poder repetir la demo: regresar la cuenta a Free.
+    const volver = document.createElement("button");
+    volver.className = "enlace centrado";
+    volver.type = "button";
+    volver.style.width = "100%";
+    volver.style.marginTop = "10px";
+    volver.textContent = "Volver al plan Free (para repetir la prueba)";
+    volver.addEventListener("click", function () {
+      Datos.cancelarPremium();
+      location.reload();
+    });
+    actual.after(volver);
+  })();
+</script>
+</body>
+</html>

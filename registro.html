@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Datos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Letra Inter. Se carga "en segundo plano" para que la app abra rápido aunque no haya internet. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="encabezado">
+      <a class="marca" href="index.html">
+        <img class="logo" src="img/logo.png" alt="" data-respaldo="logo-respaldo">
+        Codeamigo
+      </a>
+      <div class="acciones">
+        <span class="boton-icono" aria-hidden="true"><i data-icono="campana"></i></span>
+        <span class="boton-icono amarillo" aria-hidden="true"><i data-icono="usuario"></i></span>
+      </div>
+    </header>
+
+    <main class="contenido">
+      <section class="tarjeta">
+        <h1 class="titulo-grande">Datos</h1>
+        <p class="subtitulo">Completa tus datos para crear tu cuenta.</p>
+
+        <form class="formulario" id="formulario-registro" novalidate>
+          <p class="aviso-error" id="error-general" role="alert" hidden></p>
+
+          <div class="campo" id="campo-nombre">
+            <label for="nombre">Nombre completo</label>
+            <div class="caja">
+              <input id="nombre" name="nombre" type="text" placeholder="Karol" autocomplete="name" required>
+            </div>
+            <p class="error" hidden></p>
+          </div>
+
+          <div class="campo" id="campo-correo">
+            <label for="correo">Correo electrónico</label>
+            <div class="caja">
+              <input id="correo" name="correo" type="email" placeholder="karol@codeamigo.com" autocomplete="email" required>
+            </div>
+            <p class="error" hidden></p>
+          </div>
+
+          <div class="campo" id="campo-contrasena">
+            <label for="contrasena">Contraseña</label>
+            <div class="caja">
+              <input id="contrasena" name="contrasena" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+            </div>
+            <p class="error" hidden></p>
+          </div>
+
+          <div class="campo" id="campo-confirmar">
+            <label for="confirmar">Confirmar contraseña</label>
+            <div class="caja">
+              <input id="confirmar" name="confirmar" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+            </div>
+            <p class="error" hidden></p>
+          </div>
+
+          <button class="boton secundario" type="submit">Guardar</button>
+        </form>
+      </section>
+
+      <p class="nota centrado">¿Ya tienes cuenta? <a class="enlace" href="index.html">Inicia sesión</a></p>
+    </main>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/registro.js"></script>
+</body>
+</html>

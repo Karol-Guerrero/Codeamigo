@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Logros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* ---- Encabezado ---- */
+    .encabezado-logros {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+    .encabezado-logros .btn-volver {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,0.18);
+      color: var(--blanco);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .encabezado-logros h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .encabezado-logros .espacio { width: 40px; }
+
+    /* ---- Banner superior ---- */
+    .banner-logros {
+      background: linear-gradient(160deg, var(--azul-oscuro) 0%, var(--azul) 60%, var(--azul-claro) 100%);
+      padding: 20px 20px 48px;
+      text-align: center;
+      color: var(--blanco);
+    }
+    .banner-logros .trofeo-grande {
+      width: 56px;
+      height: 56px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 10px;
+    }
+    .banner-logros .trofeo-grande .icono { width: 28px; height: 28px; color: var(--amarillo); }
+    .banner-logros h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+    }
+    .banner-logros p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      margin: 0;
+    }
+    .banner-contador {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .banner-contador .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--amarillo);
+    }
+
+    /* ---- Lista de logros ---- */
+    .lista-logros {
+      margin-top: -24px;
+      padding: 0 16px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ---- Tarjeta de logro ---- */
+    .tarjeta-logro {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .tarjeta-logro.bloqueado {
+      opacity: 0.6;
+    }
+
+    /* Círculo del icono del curso */
+    .logro-icono-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .logro-icono-wrap .icono { width: 26px; height: 26px; }
+
+    /* Colores por tema */
+    .logro-icono-wrap.tema-azul   { background: #E4F0FE; color: var(--azul); }
+    .logro-icono-wrap.tema-verde  { background: #DFF5E7; color: var(--verde); }
+    .logro-icono-wrap.tema-ciruela{ background: #EDE9FE; color: #7C3AED; }
+    .logro-icono-wrap.tema-gris   { background: #E9EEF5; color: var(--texto-suave); }
+
+    /* Versión desbloqueada: borde colorido */
+    .tarjeta-logro.desbloqueado .logro-icono-wrap.tema-azul   {
+      border: 2px solid var(--azul);
+      background: linear-gradient(135deg, #E4F0FE, #BDD9FC);
+    }
+    .tarjeta-logro.desbloqueado .logro-icono-wrap.tema-verde  {
+      border: 2px solid var(--verde);
+      background: linear-gradient(135deg, #DFF5E7, #B6E8C9);
+    }
+    .tarjeta-logro.desbloqueado .logro-icono-wrap.tema-ciruela{
+      border: 2px solid #7C3AED;
+      background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+    }
+
+    /* Insignia de completado en la esquina del icono */
+    .logro-completado-sello {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--verde);
+      border: 2px solid var(--blanco);
+      display: grid;
+      place-items: center;
+    }
+    .logro-completado-sello .icono { width: 10px; height: 10px; color: var(--blanco); }
+
+    /* Texto del logro */
+    .logro-texto { flex: 1; min-width: 0; }
+    .logro-titulo {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin: 0 0 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .logro-subtitulo {
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+      margin: 0 0 8px;
+    }
+
+    /* Barra de progreso interna */
+    .logro-barra-wrap {
+      height: 6px;
+      background: #E9EEF5;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 4px;
+    }
+    .logro-barra-fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+    .tema-azul-fill    { background: linear-gradient(90deg, var(--azul), var(--azul-claro)); }
+    .tema-verde-fill   { background: linear-gradient(90deg, var(--verde), #6BCFA0); }
+    .tema-ciruela-fill { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+    .logro-barra-label {
+      font-size: 0.72rem;
+      color: var(--texto-suave);
+      font-weight: 600;
+    }
+
+    /* Badge de estado derecho */
+    .logro-badge {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .badge-pill .icono { width: 12px; height: 12px; }
+    .badge-pill.completado { background: #DFF5E7; color: #23804A; }
+    .badge-pill.bloqueado  { background: #E9EEF5; color: var(--texto-suave); }
+    .badge-pill.en-progreso { background: #E4F0FE; color: var(--azul); }
+
+    /* Lema de la insignia */
+    .logro-insignia {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--texto-suave);
+      text-align: right;
+      max-width: 90px;
+      line-height: 1.3;
+    }
+
+    /* ---- Resumen de logros ---- */
+    .barra-inferior a.activo,
+    .barra-inferior button.activo {
+      color: var(--azul);
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Encabezado -->
+  <header class="encabezado-logros">
+    <a href="inicio.html" class="btn-volver" aria-label="Volver al inicio">
+      <i data-icono="atras"></i>
+    </a>
+    <h1>Logros</h1>
+    <div class="espacio"></div>
+  </header>
+
+  <!-- Banner -->
+  <div class="banner-logros">
+    <div class="trofeo-grande">
+      <i data-icono="trofeo" class="icono"></i>
+    </div>
+    <h2>Tus insignias</h2>
+    <p>Completa todos los módulos de un curso para ganar su insignia</p>
+    <div class="banner-contador">
+      <span class="dot"></span>
+      <span id="contador-logros">0 de 0 completados</span>
+    </div>
+  </div>
+
+  <!-- Lista de logros -->
+  <main class="lista-logros" id="lista-logros" aria-label="Lista de logros">
+    <!-- Se genera con JS -->
+  </main>
+
+  <!-- Barra de navegación -->
+  <nav class="barra-inferior" aria-label="Secciones">
+    <a href="inicio.html"><i data-icono="casa"></i>Inicio</a>
+    <a href="curso.html"><i data-icono="libro"></i>Aprender</a>
+    <a href="logros.html" class="activo" aria-current="page"><i data-icono="trofeo"></i>Logros</a>
+    <a href="perfil.html"><i data-icono="usuario"></i>Perfil</a>
+  </nav>
+
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/cursos.js"></script>
+<script src="js/comun.js"></script>
+<script>
+(function () {
+  const usuario = Datos.usuarioActual();
+  if (!usuario) {
+    location.replace("index.html");
+    return;
+  }
+
+  const progreso = usuario.progreso;
+  const modulosCompletados = progreso.modulosCompletados || [];
+
+  // Mapeo tema → clase CSS
+  const TEMA_CLASE = {
+    "tema-azul":    "tema-azul",
+    "tema-verde":   "tema-verde",
+    "tema-ciruela": "tema-ciruela"
+  };
+
+  // Sobrescribimos el tema para "control" a verde para diferenciarlo de Python
+  function temaDelCurso(curso) {
+    if (curso.id === "control") return "tema-verde";
+    return TEMA_CLASE[curso.tema] || "tema-gris";
+  }
+
+  // Relleno de clase de barra
+  function claseBarraFill(tema) {
+    if (tema === "tema-azul")    return "tema-azul-fill";
+    if (tema === "tema-verde")   return "tema-verde-fill";
+    if (tema === "tema-ciruela") return "tema-ciruela-fill";
+    return "tema-azul-fill";
+  }
+
+  const lista = document.getElementById("lista-logros");
+  let totalCompletados = 0;
+
+  CURSOS.forEach(function (curso) {
+    const totalModulos = curso.modulos.length;
+    const hechos = curso.modulos.filter(function (m) {
+      return modulosCompletados.includes(m.id);
+    }).length;
+
+    const estaCompleto = hechos >= totalModulos;
+    const esBloqueado  = curso.requiere && !modulosCompletados.some(function (id) {
+      return id.startsWith(curso.requiere);
+    });
+    const pct = totalModulos > 0 ? Math.round((hechos / totalModulos) * 100) : 0;
+    const tema = temaDelCurso(curso);
+
+    if (estaCompleto) totalCompletados++;
+
+    // ---- Construir tarjeta ----
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "tarjeta-logro" +
+      (estaCompleto ? " desbloqueado" : "") +
+      (esBloqueado  ? " bloqueado" : "");
+
+    // Icono del curso
+    const iconoWrap = document.createElement("div");
+    iconoWrap.className = "logro-icono-wrap " + (esBloqueado ? "tema-gris" : tema);
+    iconoWrap.innerHTML = '<i data-icono="' + (esBloqueado ? "candado" : curso.icono) + '" class="icono"></i>';
+
+    // Sello de completado
+    if (estaCompleto) {
+      const sello = document.createElement("div");
+      sello.className = "logro-completado-sello";
+      sello.innerHTML = '<i data-icono="palomita" class="icono"></i>';
+      iconoWrap.appendChild(sello);
+    }
+
+    // Texto
+    const textoDiv = document.createElement("div");
+    textoDiv.className = "logro-texto";
+
+    const titulo = document.createElement("p");
+    titulo.className = "logro-titulo";
+    titulo.textContent = curso.titulo;
+
+    const subtitulo = document.createElement("p");
+    subtitulo.className = "logro-subtitulo";
+    subtitulo.textContent = hechos + " de " + totalModulos + " módulos";
+
+    textoDiv.appendChild(titulo);
+    textoDiv.appendChild(subtitulo);
+
+    if (!esBloqueado) {
+      // Barra de progreso
+      const barraWrap = document.createElement("div");
+      barraWrap.className = "logro-barra-wrap";
+      const barraFill = document.createElement("div");
+      barraFill.className = "logro-barra-fill " + claseBarraFill(tema);
+      barraFill.style.width = pct + "%";
+      barraWrap.appendChild(barraFill);
+
+      const barraLabel = document.createElement("span");
+      barraLabel.className = "logro-barra-label";
+      barraLabel.textContent = pct + "% completado";
+
+      textoDiv.appendChild(barraWrap);
+      textoDiv.appendChild(barraLabel);
+    }
+
+    // Badge derecho
+    const badgeDiv = document.createElement("div");
+    badgeDiv.className = "logro-badge";
+
+    const pill = document.createElement("span");
+    if (estaCompleto) {
+      pill.className = "badge-pill completado";
+      pill.innerHTML = '<i data-icono="palomita" class="icono"></i> Completado';
+    } else if (esBloqueado) {
+      pill.className = "badge-pill bloqueado";
+      pill.innerHTML = '<i data-icono="candado" class="icono"></i> Bloqueado';
+    } else if (hechos > 0) {
+      pill.className = "badge-pill en-progreso";
+      pill.innerHTML = '<i data-icono="flama" class="icono"></i> En progreso';
+    } else {
+      pill.className = "badge-pill bloqueado";
+      pill.innerHTML = '<i data-icono="estrella" class="icono"></i> Pendiente';
+    }
+
+    badgeDiv.appendChild(pill);
+
+    // Nombre de la insignia (si tiene)
+    if (curso.insignia) {
+      const insignia = document.createElement("span");
+      insignia.className = "logro-insignia";
+      insignia.textContent = curso.insignia;
+      badgeDiv.appendChild(insignia);
+    }
+
+    // Armar tarjeta
+    tarjeta.appendChild(iconoWrap);
+    tarjeta.appendChild(textoDiv);
+    tarjeta.appendChild(badgeDiv);
+    lista.appendChild(tarjeta);
+  });
+
+  // Contador del banner
+  document.getElementById("contador-logros").textContent =
+    totalCompletados + " de " + CURSOS.length + " " +
+    (totalCompletados === 1 ? "completado" : "completados");
+
+  // Renderizar iconos SVG
+  pintarIconos(document.body);
+})();
+</script>
+</body>
+</html>

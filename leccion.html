@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>Codeamigo - Lección</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Letra Inter. Se carga "en segundo plano" para que la app abra rápido aunque no haya internet. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Arriba: salir, barra de avance, vidas y XP que da -->
+    <header class="barra-leccion">
+      <a class="volver" id="salir" href="curso.html" aria-label="Salir de la lección">
+        <i data-icono="cerrar"></i>
+      </a>
+      <div class="barra" aria-hidden="true"><span id="avance-leccion" style="width: 0"></span></div>
+      <!-- leccion.js dibuja aquí los corazones (o ∞ si es Premium) -->
+      <span class="vidas" id="vidas" role="img" aria-label="Vidas"></span>
+      <span class="chip" id="xp-leccion"></span>
+    </header>
+
+    <!-- Aquí leccion.js va poniendo cada paso (explicación o pregunta) -->
+    <main class="contenido paso-leccion" id="paso"></main>
+
+    <!-- Abajo: si la respuesta estuvo bien o mal, y el botón -->
+    <footer class="pie-leccion" id="pie">
+      <p class="respuesta" id="respuesta" role="status" hidden></p>
+      <button class="boton secundario" type="button" id="boton-paso">Continuar</button>
+      <a class="boton contorno" id="boton-volver" href="curso.html" hidden>Volver al curso</a>
+    </footer>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/cursos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/leccion.js"></script>
+</body>
+</html>

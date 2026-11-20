@@ -1,0 +1,6 @@
+Guarda aqui dos imagenes exportadas desde Figma:
+
+  logo.png     -> el logo de Codeamigo del encabezado
+  mascota.png  -> la mascota azul con birrete
+
+Mientras no esten, la app muestra un cuadrito azul en su lugar.

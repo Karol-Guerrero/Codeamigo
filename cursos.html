@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Todos los cursos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="encabezado-sub">
+      <a href="inicio.html" class="btn-volver" aria-label="Volver al inicio">
+        <i data-icono="atras"></i>
+      </a>
+      <h1>Todos los cursos</h1>
+      <div class="espacio"></div>
+    </header>
+
+    <main class="contenido">
+
+      <section class="tarjeta">
+        <h2 class="titulo">Elige qué aprender</h2>
+        <p class="subtitulo" id="texto-plan">Los cursos con estrella son parte de Premium.</p>
+      </section>
+
+      <div class="filtros" role="tablist" aria-label="Filtrar cursos">
+        <button class="filtro activo" type="button" data-filtro="todos">Todos</button>
+        <button class="filtro" type="button" data-filtro="gratis">Gratis</button>
+        <button class="filtro" type="button" data-filtro="premium">Premium</button>
+        <button class="filtro" type="button" data-filtro="proximamente">Próximamente</button>
+      </div>
+
+      <ul class="lista-cursos" id="lista-cursos"></ul>
+
+    </main>
+
+    <nav class="barra-inferior" aria-label="Secciones">
+      <a href="inicio.html"><i data-icono="casa"></i>Inicio</a>
+      <a class="activo" href="curso.html"><i data-icono="libro"></i>Aprender</a>
+      <a href="logros.html"><i data-icono="trofeo"></i>Logros</a>
+      <a href="perfil.html"><i data-icono="usuario"></i>Perfil</a>
+    </nav>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/cursos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Recuperar contraseña</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <header class="encabezado-sub">
+      <a href="index.html" class="btn-volver" aria-label="Volver a iniciar sesión">
+        <i data-icono="atras"></i>
+      </a>
+      <h1>Recuperar contraseña</h1>
+      <div class="espacio"></div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- Paso 1: escribir el correo -->
+      <section class="tarjeta" id="paso-correo">
+        <span class="etiqueta"><i data-icono="candado" class="chico"></i> Paso 1 de 2</span>
+        <h2 class="titulo" style="margin-top: 10px;">¿Olvidaste tu contraseña?</h2>
+        <p class="subtitulo">No pasa nada. Escribe el correo con el que creaste tu cuenta y te ayudamos a crear una nueva.</p>
+        <div class="pasos-recuperar" aria-hidden="true"><span class="hecho"></span><span></span></div>
+
+        <form class="formulario" id="formulario-correo" novalidate>
+          <p class="aviso-error" id="error-correo" role="alert" hidden></p>
+
+          <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <div class="caja">
+              <i data-icono="correo"></i>
+              <input id="correo" name="correo" type="email" placeholder="karol@ejemplo.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <button class="boton principal" type="submit">Continuar</button>
+        </form>
+      </section>
+
+      <!-- Paso 2: contraseña nueva -->
+      <section class="tarjeta" id="paso-nueva" hidden>
+        <span class="etiqueta verde"><i data-icono="palomita" class="chico"></i> Paso 2 de 2</span>
+        <h2 class="titulo" style="margin-top: 10px;">Crea una contraseña nueva</h2>
+        <p class="subtitulo">Para la cuenta <strong id="correo-elegido"></strong></p>
+        <div class="pasos-recuperar" aria-hidden="true"><span class="hecho"></span><span class="hecho"></span></div>
+
+        <form class="formulario" id="formulario-nueva" novalidate>
+          <p class="aviso-error" id="error-nueva" role="alert" hidden></p>
+
+          <div class="campo">
+            <label for="nueva">Contraseña nueva</label>
+            <div class="caja">
+              <i data-icono="candado"></i>
+              <input id="nueva" type="password" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="confirmar">Confirma la contraseña</label>
+            <div class="caja">
+              <i data-icono="candado"></i>
+              <input id="confirmar" type="password" placeholder="Escríbela otra vez" autocomplete="new-password" required>
+            </div>
+          </div>
+
+          <button class="boton principal" type="submit">Guardar contraseña</button>
+        </form>
+      </section>
+
+      <!-- Listo -->
+      <section class="tarjeta" id="paso-listo" hidden>
+        <p class="aviso-exito">¡Listo! Tu contraseña se cambió. Ya puedes iniciar sesión con la nueva.</p>
+        <a class="boton principal" href="index.html" style="margin-top: 14px;">Ir a iniciar sesión</a>
+      </section>
+
+      <p class="aviso-info">
+        <i data-icono="ayuda" class="icono"></i>
+        <span>Versión de prueba: como la app todavía no tiene servidor, no se manda un correo. En la versión final, aquí llegaría un código de verificación a tu correo antes de dejarte cambiar la contraseña.</span>
+      </p>
+
+    </main>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/recuperar.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Iniciar sesión</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Letra Inter. Se carga "en segundo plano" para que la app abra rápido aunque no haya internet. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Encabezado azul -->
+    <header class="encabezado">
+      <span class="marca">
+        <img class="logo" src="img/logo.png" alt="Codeamigo" data-respaldo="logo-respaldo">
+      </span>
+      <div class="acciones">
+        <button class="boton-icono" type="button" aria-label="Ayuda" id="boton-ayuda">
+          <i data-icono="ayuda"></i>
+        </button>
+        <span class="boton-icono amarillo" aria-hidden="true">
+          <i data-icono="usuario"></i>
+        </span>
+      </div>
+    </header>
+
+    <main class="contenido">
+
+      <!-- Tarjeta de bienvenida -->
+      <section class="tarjeta bienvenida">
+        <div class="texto">
+          <span class="etiqueta"><i data-icono="escudo" class="chico"></i> Acceso seguro</span>
+          <h1 class="titulo-grande">¡Hola! Inicia sesión para seguir aprendiendo</h1>
+          <p class="subtitulo">Ingresa tu correo o usuario y contraseña para continuar con tus rutas, módulos y logros.</p>
+          <div class="etiquetas">
+            <span class="etiqueta"><i data-icono="escudo" class="chico"></i> Datos seguros</span>
+            <span class="etiqueta verde"><i data-icono="palomita" class="chico"></i> Acceso rápido</span>
+          </div>
+        </div>
+        <img class="mascota" src="img/mascota.png" alt="Mascota de Codeamigo" data-respaldo="mascota-respaldo">
+      </section>
+
+      <!-- Formulario para iniciar sesión -->
+      <section class="tarjeta">
+        <h2 class="titulo">Iniciar sesión</h2>
+        <p class="subtitulo">Ingresa tus datos para continuar con tu aprendizaje.</p>
+
+        <form class="formulario" id="formulario-login" novalidate>
+          <p class="aviso-error" id="error-general" role="alert" hidden></p>
+
+          <div class="campo">
+            <label for="correo">Correo o usuario</label>
+            <div class="caja">
+              <i data-icono="correo"></i>
+              <input id="correo" name="correo" type="text" placeholder="karol@ejemplo.com" autocomplete="username" required>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="contrasena">Contraseña</label>
+            <div class="caja">
+              <i data-icono="candado"></i>
+              <input id="contrasena" name="contrasena" type="password" placeholder="••••••••" autocomplete="current-password" required>
+              <button class="ver" type="button" id="ver-contrasena" aria-label="Mostrar contraseña">
+                <i data-icono="ojo-cerrado"></i>
+              </button>
+            </div>
+          </div>
+
+          <button class="boton principal" type="submit">Iniciar sesión</button>
+
+          <a class="enlace centrado" href="recuperar.html">¿Olvidaste tu contraseña?</a>
+        </form>
+      </section>
+
+      <p class="nota centrado">¿No tienes cuenta? Crea una cuenta para empezar a aprender.</p>
+      <a class="boton secundario" href="registro.html">Crear cuenta</a>
+
+    </main>
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

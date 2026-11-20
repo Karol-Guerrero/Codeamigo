@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Pago de prueba (respaldo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .encabezado-pago {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+    .encabezado-pago .btn-volver {
+      width: 40px; height: 40px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,0.18); color: var(--blanco);
+      display: grid; place-items: center; cursor: pointer;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .encabezado-pago h1 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+    .encabezado-pago .espacio { width: 40px; }
+
+    .pago-contenido {
+      padding: 20px 16px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .resumen-pago {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 20px;
+    }
+    .resumen-pago .fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+    .resumen-pago .fila + .fila { border-top: 1px solid var(--borde); }
+    .resumen-pago .fila small { color: var(--texto-suave); font-size: 0.82rem; }
+    .resumen-pago .fila strong { font-size: 0.95rem; }
+    .resumen-pago .total strong { color: var(--azul); font-size: 1.3rem; }
+
+    .etiqueta-sandbox {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF1C9;
+      color: #8A5A00;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .caja-wallet {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 20px;
+      min-height: 80px;
+    }
+    .caja-wallet h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .boton-mp-mock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      height: 48px;
+      border-radius: 10px;
+      background: #00B1EA;
+      color: var(--blanco);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .boton-mp-mock:active { transform: translateY(1px); }
+
+    .flujo-prueba {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 18px 20px;
+    }
+    .flujo-prueba h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
+    .flujo-prueba ol {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      color: var(--texto);
+    }
+    .flujo-prueba small { display: block; color: var(--texto-suave); margin-top: 10px; font-size: 0.78rem; line-height: 1.4; }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <header class="encabezado-pago">
+    <a href="../planes.html" class="btn-volver" aria-label="Volver a planes">
+      <i data-icono="atras"></i>
+    </a>
+    <h1>Pago de prueba</h1>
+    <div class="espacio"></div>
+  </header>
+
+  <main class="pago-contenido">
+
+    <section class="resumen-pago">
+      <span class="etiqueta-sandbox"><i data-icono="candado" class="icono chico"></i> Modo sandbox (prueba)</span>
+      <div class="fila">
+        <small>Concepto</small>
+        <strong>Prueba de integración · Premium</strong>
+      </div>
+      <div class="fila">
+        <small>Monto de prueba</small>
+        <strong>$5.00 MXN</strong>
+      </div>
+      <div class="fila total">
+        <small>Total a pagar</small>
+        <strong>$5.00 MXN</strong>
+      </div>
+    </section>
+
+    <section class="caja-wallet">
+      <h3>Pagar con Mercado Pago</h3>
+      <a class="boton-mp-mock" href="confirmacion_demo.html">Pagar con Mercado Pago</a>
+    </section>
+
+    <section class="flujo-prueba">
+      <h3>Qué pasa en esta prueba</h3>
+      <ol>
+        <li>El usuario paga <strong>$5.00 MXN</strong> aquí mismo, con una tarjeta de prueba de Mercado Pago (modo sandbox).</li>
+        <li>Mercado Pago confirma el pago y nos da un <em>ID de pago</em>.</li>
+        <li>Para devolver los $5.00, se ejecuta un reembolso con ese ID usando el Access Token — esto se hace desde un script aparte, nunca desde el navegador, porque el Access Token es secreto y no debe aparecer en el código de la página.</li>
+      </ol>
+      <small>Por eso esta pantalla solo usa la Public Key (que sí es segura para el navegador). El cobro y la devolución reales se muestran desde la terminal durante la demo.</small>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="../js/comun.js"></script>
+</body>
+</html>

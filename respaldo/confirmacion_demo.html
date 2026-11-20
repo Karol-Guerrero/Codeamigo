@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Pago confirmado (respaldo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    .encabezado-confirmacion {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+    .encabezado-confirmacion .btn-volver {
+      width: 40px; height: 40px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,0.18); color: var(--blanco);
+      display: grid; place-items: center; text-decoration: none; flex-shrink: 0;
+    }
+    .encabezado-confirmacion h1 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+    .encabezado-confirmacion .espacio { width: 40px; }
+    .confirmacion-contenido {
+      padding: 48px 24px; display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 18px;
+    }
+    .sello-exito {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: #DFF5E7; color: var(--verde);
+      display: grid; place-items: center;
+    }
+    .sello-exito .icono { width: 52px; height: 52px; }
+    .confirmacion-contenido h2 { font-size: 1.3rem; font-weight: 800; }
+    .confirmacion-contenido p { color: var(--texto-suave); font-size: 0.92rem; line-height: 1.5; }
+    .tarjeta-resumen-exito {
+      width: 100%; background: var(--blanco); border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra); padding: 18px 20px; text-align: left;
+    }
+    .tarjeta-resumen-exito .fila { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.88rem; }
+    .tarjeta-resumen-exito .fila small { color: var(--texto-suave); }
+    .tarjeta-resumen-exito .fila strong { color: var(--texto); }
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="encabezado-confirmacion">
+    <div class="espacio"></div>
+    <h1>Pago de prueba</h1>
+    <div class="espacio"></div>
+  </header>
+  <main class="confirmacion-contenido">
+    <div class="sello-exito">
+      <i data-icono="palomita" class="icono"></i>
+    </div>
+    <h2>¡Pago aprobado!</h2>
+    <p>Tu pago de prueba se procesó correctamente con Mercado Pago (modo sandbox).</p>
+    <div class="tarjeta-resumen-exito">
+      <div class="fila"><small>Monto</small><strong>$5.00 MXN</strong></div>
+      <div class="fila"><small>Estado</small><strong style="color:var(--verde)">Aprobado</strong></div>
+      <div class="fila"><small>ID de pago</small><strong>123456789</strong></div>
+    </div>
+    <a class="boton principal" style="margin-top:8px" href="../perfil.html">Volver a mi perfil</a>
+  </main>
+</div>
+
+<script src="../js/datos.js"></script>
+<script src="../js/comun.js"></script>
+<script>
+  // El pago de prueba salió bien: la cuenta pasa a Premium.
+  // (En la versión con servidor, esto lo hace el servidor al
+  // recibir la confirmación de Mercado Pago.)
+  Datos.activarPremium();
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1677E8">
+  <title>Codeamigo - Mi perfil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* ---- Encabezado de perfil ---- */
+    .encabezado-perfil {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul) 100%);
+      color: var(--blanco);
+    }
+    .encabezado-perfil .btn-volver {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,0.18);
+      color: var(--blanco);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .encabezado-perfil h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .encabezado-perfil .espacio {
+      width: 40px;
+    }
+
+    /* ---- Hero del avatar ---- */
+    .hero-perfil {
+      background: linear-gradient(160deg, var(--azul-oscuro) 0%, var(--azul) 60%, var(--azul-claro) 100%);
+      padding: 32px 20px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .avatar-circulo {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amarillo), var(--amarillo-claro));
+      display: grid;
+      place-items: center;
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--azul-oscuro);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.3), 0 8px 24px rgba(18,52,90,0.3);
+      margin-bottom: 14px;
+    }
+    .hero-perfil .nombre-usuario {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--blanco);
+      margin: 0 0 4px;
+    }
+    .hero-perfil .correo-usuario {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.72);
+      margin: 0 0 14px;
+    }
+    .nivel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      padding: 6px 16px;
+      color: var(--blanco);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .nivel-badge .icono { color: var(--amarillo); }
+
+    /* ---- Contenido ---- */
+    .perfil-contenido {
+      margin-top: -28px;
+      padding: 0 16px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ---- Tarjeta XP ---- */
+    .tarjeta-xp {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 18px 20px;
+    }
+    .tarjeta-xp .fila-xp {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .tarjeta-xp .etiq-xp {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--texto-suave);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tarjeta-xp .valor-xp {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--azul);
+    }
+    .barra-xp-wrap {
+      height: 12px;
+      background: #E4F0FE;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .barra-xp-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+      transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .xp-nota {
+      margin-top: 7px;
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+    }
+
+    /* ---- Chips de estadísticas ---- */
+    .chips-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .chip-stat {
+      background: var(--blanco);
+      border-radius: var(--radio-tarjeta);
+      box-shadow: var(--sombra);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-align: center;
+    }
+    .chip-stat .chip-icono {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .chip-stat .chip-icono.naranja { background: #FFF3DA; color: var(--amarillo); }
+    .chip-stat .chip-icono.azul   { background: #E4F0FE; color: var(--azul); }
+    .chip-stat .chip-icono.verde  { background: #DFF5E7; color: var(--verde); }
+    .chip-stat .chip-num {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--texto);
+      line-height: 1;
+    }
+    .chip-stat .chip-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--texto-suave);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+    }
+
+    /* ---- Separador de sección ---- */
+    .separador-seccion {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--texto-suave);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .separador-seccion::before,
+    .separador-seccion::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--borde);
+    }
+
+    /* ---- Botón cerrar sesión ---- */
+    .boton-sesion {
+      width: 100%;
+      height: 50px;
+      border: 0;
+      border-radius: var(--radio-campo);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #FDECEC;
+      color: var(--rojo);
+      border: 1.5px solid #F5CACA;
+    }
+    .boton-sesion:active { opacity: 0.75; transform: translateY(1px); }
+
+    /* ---- Nav ---- */
+    .barra-inferior a.activo,
+    .barra-inferior button.activo {
+      color: var(--azul);
+    }
+
+    /* ---- Banner Premium ---- */
+    .banner-premium {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: var(--radio-tarjeta);
+      background: linear-gradient(90deg, var(--amarillo), var(--amarillo-claro));
+      color: var(--azul-oscuro);
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 201, 40, 0.35);
+    }
+    .banner-premium .icono-estrella {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--azul); color: var(--amarillo);
+      display: grid; place-items: center; flex-shrink: 0;
+      border: 3px solid var(--azul-oscuro);
+    }
+    .banner-premium .info { flex: 1; min-width: 0; }
+    .banner-premium .info strong { display: block; font-size: 0.95rem; }
+    .banner-premium .info small { display: block; font-size: 0.78rem; margin-top: 2px; }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Encabezado con gradiente -->
+  <header class="encabezado-perfil">
+    <a href="inicio.html" class="btn-volver" aria-label="Volver al inicio">
+      <i data-icono="atras"></i>
+    </a>
+    <h1>Mi perfil</h1>
+    <div class="espacio"></div>
+  </header>
+
+  <!-- Hero del avatar -->
+  <div class="hero-perfil">
+    <div class="avatar-circulo" id="avatar-letra">K</div>
+    <p class="nombre-usuario" id="nombre-perfil">Cargando…</p>
+    <p class="correo-usuario" id="correo-perfil"></p>
+    <span class="nivel-badge">
+      <i data-icono="estrella" class="icono"></i>
+      <span id="nivel-texto">Nivel 1</span>
+    </span>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="perfil-contenido">
+
+    <!-- Tarjeta XP -->
+    <div class="tarjeta-xp">
+      <div class="fila-xp">
+        <span class="etiq-xp">
+          <i data-icono="foco" class="icono chico"></i>
+          Experiencia
+        </span>
+        <span class="valor-xp" id="xp-label">0 / 1000 XP</span>
+      </div>
+      <div class="barra-xp-wrap">
+        <div class="barra-xp-fill" id="barra-xp" style="width: 0%"></div>
+      </div>
+      <p class="xp-nota" id="xp-nota"></p>
+    </div>
+
+    <!-- Chips de estadísticas -->
+    <div class="chips-stats">
+      <div class="chip-stat">
+        <div class="chip-icono naranja"><i data-icono="flama" class="icono"></i></div>
+        <span class="chip-num" id="stat-racha">0</span>
+        <span class="chip-label">Días de racha</span>
+      </div>
+      <div class="chip-stat">
+        <div class="chip-icono azul"><i data-icono="estrella" class="icono"></i></div>
+        <span class="chip-num" id="stat-estrellas">0</span>
+        <span class="chip-label">Estrellas</span>
+      </div>
+      <div class="chip-stat">
+        <div class="chip-icono verde"><i data-icono="libro" class="icono"></i></div>
+        <span class="chip-num" id="stat-modulos">0</span>
+        <span class="chip-label">Módulos</span>
+      </div>
+    </div>
+
+    <!-- Banner Premium -->
+    <a class="banner-premium" href="planes.html">
+      <span class="icono-estrella"><i data-icono="estrella" class="icono"></i></span>
+      <span class="info">
+        <strong>Hazte Premium</strong>
+        <small>Todos los cursos, certificados y más</small>
+      </span>
+      <i data-icono="flecha"></i>
+    </a>
+
+    <!-- Separador -->
+    <div class="separador-seccion">Cuenta</div>
+
+    <!-- Cerrar sesión -->
+    <button class="boton-sesion" type="button" id="btn-cerrar-sesion">
+      <i data-icono="escudo" class="icono chico"></i>
+      Cerrar sesión
+    </button>
+
+  </main>
+
+  <!-- Barra de navegación -->
+  <nav class="barra-inferior" aria-label="Secciones">
+    <a href="inicio.html"><i data-icono="casa"></i>Inicio</a>
+    <a href="curso.html"><i data-icono="libro"></i>Aprender</a>
+    <a href="logros.html"><i data-icono="trofeo"></i>Logros</a>
+    <a href="perfil.html" class="activo" aria-current="page"><i data-icono="usuario"></i>Perfil</a>
+  </nav>
+
+</div>
+
+<script src="js/datos.js"></script>
+<script src="js/cursos.js"></script>
+<script src="js/comun.js"></script>
+<script>
+(function () {
+  const XP_POR_NIVEL = 1000;
+
+  const usuario = Datos.usuarioActual();
+  if (!usuario) {
+    location.replace("index.html");
+    return;
+  }
+
+  const p = usuario.progreso;
+
+  // Avatar: primera letra del nombre en mayúscula
+  document.getElementById("avatar-letra").textContent =
+    usuario.nombre.trim().charAt(0).toUpperCase();
+
+  // Nombre y correo
+  document.getElementById("nombre-perfil").textContent = usuario.nombre;
+  document.getElementById("correo-perfil").textContent = usuario.correo;
+
+  // Nivel
+  document.getElementById("nivel-texto").textContent = "Nivel " + p.nivel;
+
+  // XP
+  const pct = Math.min(100, Math.round((p.xp / XP_POR_NIVEL) * 100));
+  document.getElementById("xp-label").textContent = p.xp + " / " + XP_POR_NIVEL + " XP";
+  document.getElementById("barra-xp").style.width = pct + "%";
+  const faltan = XP_POR_NIVEL - p.xp;
+  document.getElementById("xp-nota").textContent =
+    "Faltan " + faltan + " XP para el Nivel " + (p.nivel + 1);
+
+  // Chips
+  document.getElementById("stat-racha").textContent = p.rachaDias;
+  document.getElementById("stat-estrellas").textContent = p.estrellas;
+
+  // Contar módulos completados
+  const totalModulos = p.modulosCompletados ? p.modulosCompletados.length : 0;
+  document.getElementById("stat-modulos").textContent = totalModulos;
+
+  // Premium: el banner cambia si la cuenta ya es Premium
+  if (Datos.esPremium()) {
+    const banner = document.querySelector(".banner-premium");
+    banner.classList.add("activo");
+    banner.querySelector("strong").textContent = "Eres Premium";
+    banner.querySelector("small").textContent =
+      "Activo desde " + (usuario.premiumDesde || "hoy") + " · Toca para ver tu plan";
+  }
+
+  // Cerrar sesión
+  document.getElementById("btn-cerrar-sesion").addEventListener("click", function () {
+    Datos.cerrarSesion();
+    location.replace("index.html");
+  });
+
+  // Renderizar iconos SVG
+  pintarIconos(document.body);
+})();
+</script>
+</body>
+</html>
